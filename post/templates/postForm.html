@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Post Blog{% endblock %}
+
+{% block content %}
+<!--    <link rel="stylesheet" type="text/css" href="http://localhost/chandu/post/post.css"/> -->
+    <h3 id="head">Create a post</h3><br/>
+
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error {{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    <div id="box">
+        <form action="" method="post">{% csrf_token %}
+            <div class="field">
+                {{ form.name.errors }}
+                    <label class="label" for="id_text">Name:</label> 
+                {{ form.name }}
+
+            </div>
+            <div class="field">
+                {{ form.title.errors }}
+                    <label class="label" for="id_text">Title:</label>
+                {{ form.title }}
+
+            </div>
+            <div class="field">
+                {{ form.text.errors }}
+                    <label class="label" for="id_text">Body:</label> 
+                {{ form.text }}
+
+            </div>
+
+            <input id="button" type="submit" value="Submit">
+        </form>
+    </div>
+
+
+{% endblock %}
